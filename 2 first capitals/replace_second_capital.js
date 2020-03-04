@@ -1,4 +1,5 @@
 var wordsWithTwoCapitalPattern = new RegExp('[\\p{Lu}\\p{Lt}]([\\p{Lu}\\p{Lt}]+)\\w*', 'gu')
+// ask about check for caps
 
 var result = {
   success: false
@@ -15,7 +16,7 @@ translation = crowdin.translation.replace(/(?:\r\n|\r)/g, '\n')
 var translationMatchArray = translation.match(wordsWithTwoCapitalPattern)
 
 if (translationMatchArray != null) {
-  result.message = 'The translate text have word(s) starting from 2 capitals. Words: ' + translationMatchArray
+  result.message = 'The translate text have word(s) starting from 2 or more capitals. Words: ' + translationMatchArray
   result.fixes = []
   while ((matchInfo = wordsWithTwoCapitalPattern.exec(translation)) !== null) {
     var fix = {
