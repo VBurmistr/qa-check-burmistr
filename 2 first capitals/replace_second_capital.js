@@ -1,10 +1,10 @@
-var wordsWithTwoCapitalPattern = new RegExp('[\\p{Lu}\\p{Lt}]([\\p{Lu}\\p{Lt}]+)\\w*', 'gu')
+var wordsWithTwoCapitalPattern = new RegExp('[\\p{Lu}\\p{Lt}]([\\p{Lu}\\p{Lt}]+)\\w*', 'gmu')
 
 var result = {
   success: false
 }
 
-translation = crowdin.translation.replace(/(?:\r\n|\r)/g, '\n')
+translation = crowdin.translation
 
 var translationMatchArray = translation.match(wordsWithTwoCapitalPattern)
 

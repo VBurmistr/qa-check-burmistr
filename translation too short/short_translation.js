@@ -10,14 +10,14 @@ var result = {
 if (crowdin.contentType == 'application/vnd.crowdin.text+plural') {
   var obj = JSON.parse(crowdin.source)
   if (obj[crowdin.context.pluralForm] != null) {
-    source = obj[crowdin.context.pluralForm].replace(/(?:\r\n|\r)/g, '\n')
+    source = obj[crowdin.context.pluralForm]
   } else {
-    source = obj.other.replace(/(?:\r\n|\r)/g, '\n')
+    source = obj.other
   }
 } else {
-  source = crowdin.source.replace(/(?:\r\n|\r)/g, '\n')
+  source = crowdin.source
 }
-translation = crowdin.translation.replace(/(?:\r\n|\r)/g, '\n')
+translation = crowdin.translation
 
 if (source.length != 0) {
   if (translation.length != 0) {
