@@ -1,5 +1,4 @@
-var wordsWithTwoCapitalPattern = new RegExp('[\\p{Lu}\\p{Lt}]([\\p{Lu}\\p{Lt}])\\w*', 'gu')
-// ask about check for caps
+var wordsWithTwoCapitalPattern = new RegExp('[\\p{Lu}\\p{Lt}]([\\p{Lu}\\p{Lt}]+)\\w*', 'gu')
 
 var result = {
   success: false
@@ -21,7 +20,7 @@ if (translationMatchArray != null) {
   while ((matchInfo = wordsWithTwoCapitalPattern.exec(translation)) !== null) {
     var fix = {
       from_pos: matchInfo.index + 1,
-      to_pos: matchInfo.index + 2,
+      to_pos: matchInfo.index + matchInfo[1].length + 1,
       replacement: matchInfo[1].toLowerCase()
     }
     result.fixes.splice(0, 0, fix)
