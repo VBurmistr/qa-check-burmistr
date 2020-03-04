@@ -1,16 +1,9 @@
 var wordsWithTwoCapitalPattern = new RegExp('[\\p{Lu}\\p{Lt}]([\\p{Lu}\\p{Lt}]+)\\w*', 'gu')
-// ask about check for caps
 
 var result = {
   success: false
 }
 
-if (crowdin.contentType == 'application/vnd.crowdin.text+plural') {
-  var obj = JSON.parse(crowdin.source)
-  source = obj[crowdin.context.pluralForm].replace(/(?:\r\n|\r)/g, '\n')
-} else {
-  source = crowdin.source.replace(/(?:\r\n|\r)/g, '\n')
-}
 translation = crowdin.translation.replace(/(?:\r\n|\r)/g, '\n')
 
 var translationMatchArray = translation.match(wordsWithTwoCapitalPattern)

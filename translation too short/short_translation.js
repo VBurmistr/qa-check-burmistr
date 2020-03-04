@@ -9,7 +9,11 @@ var result = {
 
 if (crowdin.contentType == 'application/vnd.crowdin.text+plural') {
   var obj = JSON.parse(crowdin.source)
-  source = obj[crowdin.context.pluralForm].replace(/(?:\r\n|\r)/g, '\n')
+  if (obj[crowdin.context.pluralForm] != null) {
+    source = obj[crowdin.context.pluralForm].replace(/(?:\r\n|\r)/g, '\n')
+  } else {
+    source = obj.other.replace(/(?:\r\n|\r)/g, '\n')
+  }
 } else {
   source = crowdin.source.replace(/(?:\r\n|\r)/g, '\n')
 }

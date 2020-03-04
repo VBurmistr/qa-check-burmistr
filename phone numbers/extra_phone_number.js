@@ -6,12 +6,15 @@ var result = {
 
 if (crowdin.contentType == 'application/vnd.crowdin.text+plural') {
   var obj = JSON.parse(crowdin.source)
-  source = obj[crowdin.context.pluralForm].replace(/(?:\r\n|\r)/g, '\n')
+  if (obj[crowdin.context.pluralForm] != null) {
+    source = obj[crowdin.context.pluralForm].replace(/(?:\r\n|\r)/g, '\n')
+  } else {
+    source = obj.other.replace(/(?:\r\n|\r)/g, '\n')
+  }
 } else {
   source = crowdin.source.replace(/(?:\r\n|\r)/g, '\n')
 }
 translation = crowdin.translation.replace(/(?:\r\n|\r)/g, '\n')
-// /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g
 
 function removeElementFromArray (arrayToRemoveFrom, Element) {
   for (var i = 0; i < arrayToRemoveFrom.length; i++) {
