@@ -1,4 +1,4 @@
-var phoneNumberPattern = new RegExp('([+]{1,1}[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.0-9]+)', 'g')
+var phoneNumberPattern = new RegExp('(?<=\\s|^)([+]{1,1}[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.0-9]+)(?=\\s|$)', 'gm')
 
 var result = {
   success: false
@@ -34,8 +34,8 @@ function differenceBetweenTwoArrays (decreasingArray, deductionArray) {
 
 var sourceMatchArray = []
 
-if (source.match(pat) != null) {
-  while (matchIterator = pat.exec(source)) {
+if (source.match(phoneNumberPattern) != null) {
+  while (matchIterator = phoneNumberPattern.exec(source)) {
     for (i = 1; i < matchIterator.length; i++) {
       if (matchIterator[i] != null) {
         sourceMatchArray.push(matchIterator[i])
@@ -47,8 +47,8 @@ if (source.match(pat) != null) {
 
 var translationMatchArray = []
 
-if (translation.match(pat) != null) {
-  while (matchIterator = pat.exec(translation)) {
+if (translation.match(phoneNumberPattern) != null) {
+  while (matchIterator = phoneNumberPattern.exec(translation)) {
     for (i = 1; i < matchIterator.length; i++) {
       if (matchIterator[i] != null) {
         translationMatchArray.push(matchIterator[i])

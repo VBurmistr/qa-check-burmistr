@@ -1,4 +1,4 @@
-var phoneNumberPattern = new RegExp('([+]{1,1}[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.0-9]+)', 'g')
+var phoneNumberPattern = new RegExp('(?<=\\s|^)([+]{1,1}[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.0-9]+)(?=\\s|$)', 'gm')
 
 var result = {
   success: false
