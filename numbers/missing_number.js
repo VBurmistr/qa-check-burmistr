@@ -1,4 +1,4 @@
-var numberInWordPattern = new RegExp('[\\p{L}]{1,1}(\\d{1,})[\\p{L}]{1,1}|[\\p{L}]{0,1}(\\d{1,})[\\p{L}]{1,1}|[\\p{L}]{1,1}(\\d{1,})[\\p{L}]{0,1}', 'gmu')
+var numberInWordPattern = new RegExp('(\\d{1,})', 'gmu')
 
 var result = {
   success: false
