@@ -1,4 +1,4 @@
-var wordsWithTwoCapitalPattern = new RegExp('[\\p{Lu}\\p{Lt}]([\\p{Lu}\\p{Lt}]+)\\w*', 'gmu')
+var wordsWithTwoCapitalPattern = new RegExp('(?<=\\s|^)[\\p{Lu}\\p{Lt}]([\\p{Lu}\\p{Lt}]+)\\w*', 'gmu')
 
 var result = {
   success: false
