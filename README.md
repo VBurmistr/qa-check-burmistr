@@ -1,14 +1,10 @@
 # qa-check-burmistr
 qa checks created by Vladimir Burmistr
 
-2 first capitals - шукає 2 підряд заглавні букви з початку слова, пропонує видалити лишню.
-
-numbers - 3 чека.Всі шукають цифри в словах, будь то в середині слова, на початку або в кінці. 
-А далі 1 з них виводить та дає можливість видалити лишні, звіряє з сорсом, 
-другий чек прораховує чи кількість цих цифр рівна виводить кількість таких цифр в сорсі та перекладі,
-а третій виводить меседж з тими цифрами які є в сорсі, а в перекладі немає.
-
-phone_numbers - функціонал аналогічний до "numbers" але вже шукає телефонні номери.
-
-translation too short - рахує довжину сорса та транслейта, і відповідно до відсотка який задає користувач
-видає/не видає повідомлення про занадто короткий переклад. 
+• 2 first capitals - searching for 2 or more capitals in translation, then changing extra uppercase characters to lowercase.
+• extra numbers - searching for numbers in translation that are not in the source, then removing this extra numbers from translation.
+• missing numbers - searching for numbers in source that are not in the translation, then showing message with this numbers.
+• same count of numbers - checking count of numbers in translation and source, when count of numbers are different showing message with count information.
+• extra phone number - searching for phone numbers in translation that are not in the source, then removing this extra phone numbers from translation.
+• missing phone number - searching for phone numbers in source that are not in the translation, then showing message with this phone numbers.
+• same count of phone numbers - checking count of phone numbers in translation and source, if count of phone numbers are different showing message with count information.
