@@ -1,4 +1,4 @@
-var numberInWordPattern = new RegExp('(?<=\\s|^)(\\d{1,})(?=\\s)', 'gmu')
+var numberInWordPattern = new RegExp('(?<=\\s|^)(\\d{1,})(?=\\s|$)', 'gmu')
 
 var result = {
   success: false
@@ -16,17 +16,8 @@ if (crowdin.contentType == 'application/vnd.crowdin.text+plural') {
 }
 translation = crowdin.translation
 
-if (source.match(numberInWordPattern) != null) {
-  sourceMatchArray = source.match(numberInWordPattern).slice(0)
-} else {
-  sourceMatchArray = []
-}
-
-if (translation.match(numberInWordPattern) != null) {
-  translationMatchArray = translation.match(numberInWordPattern).slice(0)
-} else {
-  translationMatchArray = []
-}
+sourceMatchArray = source.match(numberInWordPattern)
+translationMatchArray = translation.match(numberInWordPattern)
 
 sourceInsertedWordCount = sourceMatchArray !== null ? sourceMatchArray.length : 0
 translationInsertedWordCount = translationMatchArray !== null ? translationMatchArray.length : 0

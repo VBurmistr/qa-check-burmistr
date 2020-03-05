@@ -18,18 +18,14 @@ translation = crowdin.translation
 
 var sourceMatchArray = []
 
-if (source.match(phoneNumberPattern) != null) {
-  while (matchIterator = phoneNumberPattern.exec(source)) {
-    sourceMatchArray.push(matchIterator[1])
-  }
+while (matchIterator = phoneNumberPattern.exec(source)) {
+  sourceMatchArray.push(matchIterator[1])
 }
 
 var translationMatchArray = []
 
-if (translation.match(phoneNumberPattern) != null) {
-  while (matchIterator = phoneNumberPattern.exec(translation)) {
-    translationMatchArray.push(matchIterator[1])
-  }
+while (matchIterator = phoneNumberPattern.exec(translation)) {
+  translationMatchArray.push(matchIterator[1])
 }
 
 sourceInsertedWordCount = sourceMatchArray !== null ? sourceMatchArray.length : 0

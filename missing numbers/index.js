@@ -37,29 +37,16 @@ function differenceBetweenTwoArrays (decreasingArray, deductionArray) {
 
 var sourceMatchArray = []
 
-if (source.match(numberInWordPattern) != null) {
-  while (matchIterator = numberInWordPattern.exec(source)) {
-    for (i = 1; i < matchIterator.length; i++) {
-      if (matchIterator[i] != null) {
-        sourceMatchArray.push(matchIterator[i])
-        break
-      }
-    }
-  }
+while (matchIterator = numberInWordPattern.exec(source)) {
+  sourceMatchArray.push(matchIterator[1])
 }
 
 var translationMatchArray = []
 
-if (translation.match(numberInWordPattern) != null) {
-  while (matchIterator = numberInWordPattern.exec(translation)) {
-    for (i = 1; i < matchIterator.length; i++) {
-      if (matchIterator[i] != null) {
-        translationMatchArray.push(matchIterator[i])
-        break
-      }
-    }
-  }
+while (matchIterator = numberInWordPattern.exec(translation)) {
+  translationMatchArray.push(matchIterator[1])
 }
+
 
 var missingNumbersSource = []
 

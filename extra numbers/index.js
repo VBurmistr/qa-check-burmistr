@@ -1,4 +1,4 @@
-var numberInWordPattern = new RegExp('(?<=\\s|^)(\\d{1,})(?=\\s)', 'gmu')
+var numberInWordPattern = new RegExp('(?<=\\s|^)(\\d{1,})(?=\\s|$)', 'gmu')
 
 var result = {
   success: false
@@ -37,28 +37,14 @@ function differenceBetweenTwoArrays (decreasingArray, deductionArray) {
 
 var sourceMatchArray = []
 
-if (source.match(numberInWordPattern) != null) {
-  while (matchIterator = numberInWordPattern.exec(source)) {
-    for (i = 1; i < matchIterator.length; i++) {
-      if (matchIterator[i] != null) {
-        sourceMatchArray.push(matchIterator[i])
-        break
-      }
-    }
-  }
+while (matchIterator = numberInWordPattern.exec(source)) {
+  sourceMatchArray.push(matchIterator[1])
 }
 
 var translationMatchArray = []
 
-if (translation.match(numberInWordPattern) != null) {
-  while (matchIterator = numberInWordPattern.exec(translation)) {
-    for (i = 1; i < matchIterator.length; i++) {
-      if (matchIterator[i] != null) {
-        translationMatchArray.push(matchIterator[i])
-        break
-      }
-    }
-  }
+while (matchIterator = numberInWordPattern.exec(translation)) {
+  translationMatchArray.push(matchIterator[1])
 }
 
 var extraNumbersInTranslate = differenceBetweenTwoArrays(translationMatchArray, sourceMatchArray).slice(0)
@@ -67,23 +53,14 @@ if (extraNumbersInTranslate.length != 0) {
   result.message = 'The translate text have some extra numbers. Extra numbers in translate: ' + extraNumbersInTranslate
   result.fixes = []
   while ((matchInfo = numberInWordPattern.exec(translation)) !== null) {
-    var notNullGroup
-
-    for (i = 1; i < matchInfo.length; i++) {
-      if (matchInfo[i] != null) {
-        notNullGroup = matchInfo[i]
-        break
-      }
-    }
-
-    if (extraNumbersInTranslate.indexOf(notNullGroup) != -1) {
+    if (extraNumbersInTranslate.indexOf(matchInfo[1]) != -1) {
       var fix = {
         from_pos: matchInfo.index,
         to_pos: numberInWordPattern.lastIndex,
         replacement: matchInfo[0].replace(/[0-9]/g, '')
       }
       result.fixes.splice(0, 0, fix)
-      removeElementFromArray(extraNumbersInTranslate, notNullGroup)
+      removeElementFromArray(extraNumbersInTranslate, matchInfo[1])
     }
   }
   return result
