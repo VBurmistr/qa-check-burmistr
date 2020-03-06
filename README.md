@@ -14,3 +14,5 @@ qa checks created by Vladimir Burmistr
 • missing phone number - this QA check searching for phone numbers in source that are not in the translation, then showing message with this phone numbers. Not configurable.
 
 • same count of phone numbers - this QA check checking count of phone numbers in translation and source, if count of phone numbers are different showing message with count information. Not configurable.
+
+• number localisation - in progress.
