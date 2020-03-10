@@ -1,4 +1,4 @@
-var numberInWordPattern = new RegExp('(?<=\\s|^|[])(\\d{1,}|((\\d){1,})([,.](\\d)*[%]{0,1}))(?=\\s|[\\.,-\\/#!$%\\^\&\\*;:{}=\\-_`~()]$|$)', 'gmu')
+var numberInWordPattern = new RegExp('(?<=\\s|^|[])(\\d{1,}[%]{0,1}|((\\d){1,})([,.](\\d)*[%]{0,1}))(?=\\s|[\\.,-\\/#!$%\\^\&\\*;:{}=\\-_`~()]$|$)', 'gmu')
 
 var result = {
   success: false
@@ -18,7 +18,6 @@ translation = crowdin.translation
 
 sourceMatchArray = source.match(numberInWordPattern)
 translationMatchArray = translation.match(numberInWordPattern)
-return sourceMatchArray+translationMatchArray
 sourceInsertedWordCount = sourceMatchArray !== null ? sourceMatchArray.length : 0
 translationInsertedWordCount = translationMatchArray !== null ? translationMatchArray.length : 0
 

@@ -1,4 +1,4 @@
-var numberInWordPattern = new RegExp('(?<=\\s|^|[])(\\d{1,}|((\\d){1,})([,.](\\d)*[%]{0,1}))(?=\\s|[\\.,-\\/#!$%\\^\&\\*;:{}=\\-_`~()]$|$)', 'gmu')
+var numberInWordPattern = new RegExp('(?<=\\s|^|[])(\\d{1,}[%]{0,1}|((\\d){1,})([,.](\\d)*[%]{0,1}))(?=\\s|[\\.,-\\/#!$%\\^\&\\*;:{}=\\-_`~()]$|$)', 'gmu')
 
 var result = {
   success: false
@@ -47,17 +47,17 @@ while (matchIterator = numberInWordPattern.exec(translation)) {
   translationMatchArray.push(matchIterator[1])
 }
 
-var extraNumbersInTranslate = differenceBetweenTwoArrays(translationMatchArray, sourceMatchArray).slice(0)
+var extraNumbersInTranslate = differenceBetweenTwoArrays(translationMatchArray, sourceMatchArray)
 
 if (extraNumbersInTranslate.length != 0) {
-  result.message = 'The translate text have some extra numbers. Extra numbers in translate: ' + extraNumbersInTranslate
+  result.message = 'The translate text have some extra numbers. Extra numbers in translate: ' + extraNumbersInTranslate.join(', ')
   result.fixes = []
   while ((matchInfo = numberInWordPattern.exec(translation)) !== null) {
     if (extraNumbersInTranslate.indexOf(matchInfo[1]) != -1) {
       var fix = {
         from_pos: matchInfo.index,
         to_pos: numberInWordPattern.lastIndex,
-        replacement: matchInfo[0].replace(/[0-9]/g, '')
+        replacement: matchInfo[0].replace(/[0-9.,%]/g, '')
       }
       result.fixes.splice(0, 0, fix)
       removeElementFromArray(extraNumbersInTranslate, matchInfo[1])
