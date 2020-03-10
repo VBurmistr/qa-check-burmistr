@@ -1,4 +1,4 @@
-var numberInWordPattern = new RegExp('(?<=\\s|^)(\\d{1,})(?=\\s|$)', 'gmu')
+var numberInWordPattern = new RegExp('(?<=\\s|^|[])(\\d{1,}|((\\d){1,})([,.](\\d)*[%]{0,1}))(?=\\s|[\\.,-\\/#!$%\\^\&\\*;:{}=\\-_`~()]$|$)', 'gmu')
 
 var result = {
   success: false

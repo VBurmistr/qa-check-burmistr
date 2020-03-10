@@ -1,4 +1,4 @@
-var numberInWordPattern = new RegExp('(?<=\\s|^)(\\d{1,})(?=\\s)', 'gmu')
+var numberInWordPattern = new RegExp('(?<=\\s|^|[])(\\d{1,}|((\\d){1,})([,.](\\d)*[%]{0,1}))(?=\\s|[\\.,-\\/#!$%\\^\&\\*;:{}=\\-_`~()]$|$)', 'gmu')
 
 var result = {
   success: false
@@ -53,7 +53,7 @@ var missingNumbersSource = []
 missingNumbersSource = differenceBetweenTwoArrays(sourceMatchArray, translationMatchArray)
 
 if (missingNumbersSource.length != 0) {
-  result.message = 'The translate text have some missing numbers. Missing numbers in translate: ' + missingNumbersSource
+  result.message = 'The translate text have some missing numbers. Missing numbers in translate: ' + missingNumbersSource.join(', ')
   result.fixes = []
   return result
 } else {
