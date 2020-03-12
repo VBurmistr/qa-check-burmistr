@@ -2,7 +2,7 @@
 var arrayOfPunctuation = [',','.',':',';','!','?'] // put here any punctuation signs
 
 
-var spaceAfterPunctuationPattern = new RegExp('(['+arrayOfPunctuation.join('')+'])(?!['+arrayOfPunctuation.join('')+'])', 'gmu')
+var spaceAfterPunctuationPattern = new RegExp('(?<!\\d)(['+arrayOfPunctuation.join('')+'])(?!['+arrayOfPunctuation.join('')+'])', 'gmu')
 
 var result = {
   success: false
